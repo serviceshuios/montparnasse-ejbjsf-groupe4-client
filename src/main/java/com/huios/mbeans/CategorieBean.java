@@ -50,7 +50,7 @@ public class CategorieBean {
 	public void supprimerCategorie(long idCategorie) {
 		service.supprimerCategorie(idCategorie);
 	}
-	public Categorie getProduit(long idCategorie) {
+	public Categorie getCategorie(long idCategorie) {
 		return service.getCategorie(idCategorie);
 	}
 	

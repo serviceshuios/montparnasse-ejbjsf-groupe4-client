@@ -21,7 +21,8 @@ public class Produit {
 	private int quantite;
 	private double prix;
 	@ManyToOne
-	private Categorie categorie;
+	//on initialise ca categorie pour éviter l'erreur target unreachable 
+	private Categorie categorie = new Categorie();
 	public long getIdProduit() {
 		return idProduit;
 	}

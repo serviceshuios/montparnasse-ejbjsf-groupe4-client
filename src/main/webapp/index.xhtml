@@ -19,10 +19,15 @@
 				<h:outputLabel value="prix" />
 				<h:inputText id="prix" value="#{produitBean.produit.prix}" />
 				<h:outputLabel value="Categorie" />
-				<h:selectOneMenu value="#{produitBean.produit.categorie}" >
+				<h:selectOneMenu value="#{produitBean.produit.categorie.idCategorie}" >
 					<f:selectItems value="#{produitBean.categories}" 
-					var="cat" itemValue="#{cat.idCategorie}" itemLabel="#{cat.nomCategorie}"/>
+					var="cat" itemValue="#{cat.idCategorie}" 
+					itemLabel="#{cat.nomCategorie}"/>
 				</h:selectOneMenu>
+				<!-- 
+				<h:selectOneMenu accesskey="#{produitBean.categorie.idCategorie}" 
+				value="#{produitBean.categorie.nomCategorie}"></h:selectOneMenu>
+				 -->
 			</h:panelGrid>
 			<h:commandButton action="#{produitBean.ajouterProduit}"
 				value="ajouter" />
