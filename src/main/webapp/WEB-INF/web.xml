@@ -27,7 +27,7 @@
     <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
   </listener>
   <welcome-file-list>
-    <welcome-file>produits.xhtml</welcome-file>
+    <welcome-file>categories.xhtml</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>

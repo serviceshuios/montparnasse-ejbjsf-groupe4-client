@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,14 +15,14 @@ import com.huios.service.Iservice;
 
 @Controller
 @ManagedBean
-@SessionScoped
+//@SessionScoped
+@RequestScoped
 public class ProduitBean {
 	
 	// attributs
 	@Autowired
 	private Iservice service;
-	@Autowired
-	private Produit produit;
+	private Produit produit= new Produit();
 	
 	private List<Categorie> categories;
 	
@@ -52,7 +53,7 @@ public class ProduitBean {
 	// méthodes
 	public void ajouterProduit() {
 		service.ajouterProduit(produit);
-		produit = new Produit();
+		//produit = new Produit();
 	}
 	public List<Produit> listerProduits() {
 		return service.listerProduits();
@@ -61,6 +62,7 @@ public class ProduitBean {
 		service.supprimerProduit(idProduit);
 	}
 	public Produit getProduit(long idProduit) {
+		produit=service.getProduit(idProduit);
 		return service.getProduit(idProduit);
 	}
 }

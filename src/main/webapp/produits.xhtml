@@ -55,26 +55,19 @@
 					<f:facet name="header">PRIX</f:facet>
 					<h:outputText value="#{p.prix}" />
 				</h:column>
-				<h:column>
-					<f:facet name="header">CATEGORIE</f:facet>
-					<h:outputText value="#{p.categorie.nomCategorie}" />
-				</h:column>
+<!-- 				<h:column> -->
+<!-- 					<f:facet name="header">CATEGORIE</f:facet> -->
+<!-- 					<h:outputText value="#{p.categorie.nomCategorie}" /> -->
+<!-- 				</h:column> -->
 				<h:column>
 					<f:facet name="header">SUPPRIMER</f:facet>
-					<h:commandLink
-						action="#{produitBean.supprimerProduit(p.idProduit)}"
-						value="Supprimer">
-						<f:setPropertyActionListener
-							target="#{produitBean.produit.idProduit}" value="#{p.idProduit}" />
-					</h:commandLink>
+			<h:commandLink action="#{produitBean.supprimerProduit(p.idProduit)}" 
+			value="Supp"/>
 				</h:column>
 				<h:column>
 					<f:facet name="header">MODIFIER</f:facet>
-					<h:commandLink action="#{produitBean.getProduit(p.idProduit)}"
-						value="Modifier">
-						<f:setPropertyActionListener target="#{produitBean.produit}"
-							value="#{p}" />
-					</h:commandLink>
+					<h:commandLink action="#{produitBean.getProduit(p.idProduit)}" 
+			value="Modif"/>
 				</h:column>
 			</h:dataTable>
 		</h:form>

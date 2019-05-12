@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,14 +15,15 @@ import com.huios.service.Iservice;
 
 @Controller
 @ManagedBean
-@SessionScoped
+//@SessionScoped
+@RequestScoped
 public class CategorieBean {
 	
 	// attributs
 	@Autowired
 	private Iservice service;
-	@Autowired
-	private Categorie categorie;
+	
+	private Categorie categorie = new Categorie();
 
 	public Iservice getService() {
 		return service;
@@ -42,7 +44,6 @@ public class CategorieBean {
 	// méthodes
 	public void ajouterCategorie() {
 		service.ajouterCategorie(categorie);
-		categorie = new Categorie();
 	}
 	public List<Categorie> listerCategories() {
 		return service.listerCategories();
