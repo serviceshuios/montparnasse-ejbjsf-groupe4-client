@@ -23,7 +23,7 @@ public class PersonneBean implements Serializable {
 	@EJB
 	private IPersonneRemote service;
 	private Personne personne= new Personne();
-	private List<Personne> comptes;
+	private List<Personne> personnes;
 	public IPersonneRemote getService() {
 		return service;
 	}
@@ -36,12 +36,14 @@ public class PersonneBean implements Serializable {
 	public void setPersonne(Personne personne) {
 		this.personne = personne;
 	}
-	public List<Personne> getComptes() {
-		return comptes;
+	public List<Personne> getPersonnes() {
+		return personnes;
 	}
-	public void setComptes(List<Personne> comptes) {
-		this.comptes = comptes;
+	public void setPersonnes(List<Personne> personnes) {
+		this.personnes = personnes;
 	}
+	
+	
 	
 
 }
