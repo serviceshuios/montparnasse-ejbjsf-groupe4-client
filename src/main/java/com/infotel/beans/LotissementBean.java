@@ -43,6 +43,4 @@ public class LotissementBean implements Serializable {
 		this.lotissements = lotissements;
 	}
 	
-	
-
 }

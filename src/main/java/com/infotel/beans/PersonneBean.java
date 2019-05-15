@@ -43,7 +43,5 @@ public class PersonneBean implements Serializable {
 		this.personnes = personnes;
 	}
 	
-	
-	
 
 }
