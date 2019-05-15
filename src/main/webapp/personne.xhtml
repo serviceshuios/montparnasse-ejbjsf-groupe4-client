@@ -24,7 +24,7 @@
 	</ui:define>
 
 <h2>Liste des Personnes</h2>
-			<h:dataTable value="#{produitBean.listerPersonnes()}" var="p"
+			<h:dataTable value="#{personneBean.listerPersonnes()}" var="p"
 				class="table table-striped">
 				<h:column>
 					<f:facet name="header">Id Personne</f:facet>
@@ -44,12 +44,12 @@
 				</h:column>
 				<h:column>
 				<f:facet name="header">SUPPRIMER</f:facet> 
-			<h:commandLink action="#{produitBean.supprimerPersonne(p.idPersonne)}"  
+			<h:commandLink action="#{personneBean.supprimerPersonne(p.idPersonne)}"  
 			value="Supprimer"/> 
 				</h:column> 
  				<h:column> 
 	<f:facet name="header"> MODIFIER</f:facet> 
-					<h:commandLink action="#{produitBean.getProduit(p.idPersonne)}" 
+					<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}" 
  			value="Modififier"/>
 				</h:column> 
 			</h:dataTable>

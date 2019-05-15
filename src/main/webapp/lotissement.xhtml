@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+      <h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+</h:head>
+<body>	
+		<!--  redefinition de la balise partie content -->
+	<ui:define name="content">
+	<h:form>
+	<h:outputLabel value="numLot"/>
+	<h:inputText value="#{lotissementBean.numlot"/> <br/>
+		<h:outputLabel value="adresseLot"/>
+	<h:inputText value="#{lotissementBean.adresseLot"/> <br/>
+		<h:outputLabel value="dateCreation"/>
+	<h:inputText value="#{lotissementBean.dateCreation"/> <br/>
+	<h:outputLabel value="prix"/>
+	<h:inputText value="#{lotissementBean.prix"/> <br/>
+	<h:commandButton action="#" value="ajouter"/>
+	</h:form>
+	</ui:define>
+
+<h2>Liste des Lots</h2>
+			<h:dataTable value="#{lotissementBean.listerPersonnes()}" var="l"
+				class="table table-striped">
+				<h:column>
+					<f:facet name="header">Id Lotissement</f:facet>
+					<h:outputText value="#{l.idLot}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Numero de Lot</f:facet>
+					<h:outputText value="#{l.numLot}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Adresse </f:facet>
+					<h:outputText value="#{l.adresseLot}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> Date de Creation</f:facet>
+					<h:outputText value="#{l.dateCreation}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> Prix</f:facet>
+					<h:outputText value="#{l.prix}" />
+				</h:column>
+				<h:column>
+				<f:facet name="header">SUPPRIMER</f:facet> 
+			<h:commandLink action="#{lotissementBean.supprimerLotissement(l.idLot)}"  
+			value="Supprimer"/> 
+				</h:column> 
+ 				<h:column> 
+	<f:facet name="header"> MODIFIER</f:facet> 
+					<h:commandLink action="#{lotissementBean.getLotissement(l.idLot)}" 
+ 			value="Modififier"/>
+				</h:column> 
+			</h:dataTable>
+	
+	
+</body>
+</html>
