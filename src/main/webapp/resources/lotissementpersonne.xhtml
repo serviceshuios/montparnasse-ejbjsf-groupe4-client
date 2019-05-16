@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+<f:view>  
+
+<h:head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <h:outputStylesheet library="css" name="style.css" />
+    <h:outputStylesheet library="css" name="bootstrap.css" />
+</h:head>
+<body>
+<div class="container">
+    <h1>Liste de Lotissements</h1>
+    <h:form>
+        
+        
+            <input type="hidden" name="idPersonne" value="${idPersonne}" />
+            
+            <h:outputLabel value="Nom" />
+            <h:inputText id="nom" value="#{personneBean.personne.nom}" />
+            
+            <h:outputLabel value="Prenom" />
+            <h:inputText id="prenom" value="#{personneBean.personne.prenom}" />
+            
+            <h:outputLabel value="Age" />
+            <h:inputText id="age" value="#{personneBean.personne.age}" />
+
+            
+      
+        
+        <h:commandButton action="#{personneBean.ajouterPersonne}" value="ajouter" />
+        
+        <h:commandButton action="#{personneBean.modifierPersonne}" value="modifier" />
+        
+        <div >
+        
+        <h2>Liste des personnes</h2>
+        <h:dataTable  value="#{personneBean.findAllPersonne()}" var="p" border="1" class="table table-striped">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+            <h:outputText value="#{p.idPersonne}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">NOM</f:facet>
+            <h:outputText value="#{p.nom}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">PRENOM</f:facet>
+            <h:outputText value="#{p.prenom}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">AGE</f:facet>
+            <h:outputText value="#{p.age}"/>
+        </h:column>
+        
+        <h:column>
+            <f:facet name="header">Supprimer</f:facet>
+            <h:commandLink action="#{personneBean.supprimerPersonne(p.idPersonne)}" value="Supprimer">
+            <f:setPropertyActionListener value="#{p.idPersonne}" target="#{personneBean.personne.idPersonne}"></f:setPropertyActionListener>
+            </h:commandLink>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Modifier</f:facet>
+            <h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}" value="Modifier">
+            <f:setPropertyActionListener target="#{personneBean.personne}" value="#{p}"></f:setPropertyActionListener>
+            </h:commandLink>
+        </h:column>
+        </h:dataTable>
+        </div>    
+</h:form>
+</div>
+</body>
+
+</f:view>
+
+</html>
