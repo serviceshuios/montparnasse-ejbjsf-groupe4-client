@@ -1,36 +1,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-      <h:head>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
 	<meta charset="UTF-8" />
 	<title>Insert title here</title>
 	<h:outputStylesheet library="css" name="style.css" />
 	<h:outputStylesheet library="css" name="bootstrap.css" />
 </h:head>
-<body>	
-		<!--  redefinition de la balise partie content -->
-	<ui:define name="content">
-	<h:form>
-	<h:outputLabel value="nom"/>
-	<h:inputText value="#{personneBean.nom"/> <br/>
-		<h:outputLabel value="prenom"/>
-	<h:inputText value="#{personneBean.prenom"/> <br/>
-		<h:outputLabel value="age"/>
-	<h:inputText value="#{personneBean.age"/> <br/>
-	<h:commandButton action="#" value="ajouter"/>
-	</h:form>
-	</ui:define>
-	
-<h2>Liste des Personnes</h2>
-			<h:dataTable value="#{personneBean.listerPersonnes()}" var="p"
+<body>
+
+	<div class="container">
+	 <h1>Ajout d'une personne</h1>
+		<h:form>
+		<h:panelGrid columns="1" >
+			<h:outputLabel value="Nom" />
+			<h:inputText id="nom" value="#{personneBean.personne.nom}" />
+			<br />
+			<h:outputLabel value="Prenom"/>
+			<h:inputText id="prenom" value="#{personneBean.personne.prenom}" />
+			<br />
+			<h:outputLabel value="Age" />
+			<h:inputText id="age" value="#{personneBean.personne.age}" />
+			<br />
+		</h:panelGrid>
+		<h:commandButton action="#{personneBean.ajouterPersonne}" value="ajouter" />
+			 
+
+			<h2>Liste des Personnes</h2>
+			<h:dataTable value="#{personneBean.findAllPersonne()}" var="p"
 				class="table table-striped">
 				<h:column>
 					<f:facet name="header">Id Personne</f:facet>
 					<h:outputText value="#{p.idPersonne}" />
 				</h:column>
-				<h:column>
+				<h:column> 
 					<f:facet name="header">Nom</f:facet>
 					<h:outputText value="#{p.nom}" />
 				</h:column>
@@ -43,15 +48,18 @@
 					<h:outputText value="#{p.age}" />
 				</h:column>
 				<h:column>
-				<f:facet name="header">SUPPRIMER</f:facet> 
-			<h:commandLink action="#{personneBean.supprimerPersonne(p.idPersonne)}"  
-			value="Supprimer"/> 
-				</h:column> 
- 				<h:column> 
-	<f:facet name="header"> MODIFIER</f:facet> 
-					<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}" 
- 			value="Modififier"/>
-				</h:column> 
+					<f:facet name="header">SUPPRIMER</f:facet>
+					<h:commandLink
+						action="#{personneBean.supprimerPersonne(p.idPersonne)}"
+						value="Supprimer" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"> MODIFIER</f:facet>
+					<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}"
+						value="Modififier" />
+				</h:column>
 			</h:dataTable>
+		</h:form>
+	</div>
 </body>
 </html>
