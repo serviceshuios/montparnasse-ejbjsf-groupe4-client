@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Insert title here</title>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+</h:head>
+<body>
+
+	<div class="container">
+		<h:form>
+		
+			<h:panelGrid columns="1" cellpadding="5">
+			<f:validateBean>
+			
+			
+            <input type="hidden" name="idPersonne" value="${idPersonne}" />
+				<h:outputLabel value="nom" />
+				<h:inputText id="nom" value="#{personneBean.personne.nom}"> </h:inputText>
+				<h:message for="nom" errorClass="alert alert-danger"></h:message>
+				<h:outputLabel value="prenom" />
+				<h:inputText id="prenom"  value="#{personneBean.personne.prenom}">
+					<f:convertDateTime />
+				</h:inputText>
+				<h:message for="age" errorClass="alert alert-danger"></h:message>
+				</f:validateBean>
+			</h:panelGrid>
+			<h:commandButton action="#{personneBean.ajouterPersonne}"
+				value="ajouter" />
+			<h2>Liste des personnes</h2>
+			<h:dataTable value="#{personneBean.findAllPersonnes()}" var="p"
+				class="table table-striped">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{p.idPersonne}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">NOM</f:facet>
+					<h:outputText value="#{p.nom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">PRENOM</f:facet>
+					<h:outputText value="#{p.prenom}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">AGE</f:facet>
+					<h:outputText value="#{p.age}" />
+				</h:column>
+
+					<f:facet name="header">SUPPRIMER</f:facet>
+			<h:commandLink action="#{personneBean.supprimerPersonne(p.idPersonne)}" 
+			value="Supp"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">MODIFIER</f:facet>
+					<h:commandLink action="#{personneBean.getPersonne(p.idPersonne)}" 
+			value="Modif"/>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</div>
+</body>
+</html>
